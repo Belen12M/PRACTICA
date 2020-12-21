@@ -79,5 +79,4 @@ select nombre_plato, fecha_compra, id_tipo, precio_plato from cliente , menu
 
 -----GANANCIAS DESDE INICIO DE LA ACTIVIDAD------------- 
 
-select nombre_plato, fecha_compra, id_tipo, precio_plato
  sum(precio_plato) as TOTAL from menu, cliente
