@@ -72,3 +72,12 @@ where id_tipo like 'DOMICILIO';
 
 select ct.id_plato,id_tipo,mn.nombre_plato,precio_plato from cliente as ct 
 inner join menu as mn on  ct.id_plato=mn.id_plato where id_tipo like 'DOMICILIO';
+
+-----------Todos los platos que se han vendido desde que inicio la actividad--------
+
+select nombre_plato, fecha_compra, id_tipo, precio_plato from cliente , menu 
+
+-----GANANCIAS DESDE INICIO DE LA ACTIVIDAD------------- 
+
+select nombre_plato, fecha_compra, id_tipo, precio_plato
+ sum(precio_plato) as TOTAL from menu, cliente
