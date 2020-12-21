@@ -1,0 +1,74 @@
+create table cliente(
+id_cedula integer,
+nombre_cliente varchar,
+apellido_cliente varchar,
+direccion_cliente varchar,
+telefono_cliente integer,
+id_plato integer,
+id_tipo  varchar,
+fecha_compra Date,
+primary key (id_cedula)
+)
+insert into cliente values
+(1316546646, 'Karem', ' Plua', 'Barrio 15 de abril','0985456645', '1231 ', 'ENTRAGA', ' 18/10/2020')
+(1316746577, 'Henry',' Choez', 'Barrio Santa Ana','0986673566', '1234 ', 'SERVIRSE', ' 14/12/2020')
+(1316615674, 'Angel', ' chavez', 'Alta Mira','0987356753', '1231 ', 'ENTRAGA', ' 15/11/2020')
+(1324566665, 'Cristian', ' Macias', 'Jacuata','0982457454', '1232 ', 'SERVIRSE', ' 11/09/2020')
+(1325646564, 'Jesus', 'Zambrano', 'Jokay','0989252454', '1233 ', 'ENTRAGA', ' 12/02/2020')
+(1317567353, 'Javier', 'Choez', 'Tarki','0987345244', '1233 ', 'ENTRAGA', ' 15/10/2020')
+(1315673566, 'Raul', 'Piloco', 'Ulbirrios','0989746743', '1232 ', 'SERVIRSE', ' 16/11/2020')
+(1313565567, 'Lauro', ' Bartolome', 'Mantadosmil','0983656653', '1231 ', 'ENTRAGA', ' 17/11/2020')
+(1313415645, 'Helen', 'Macias', 'Barrio Jipijapa','0963535655', '1232 ', 'ENTRAGA', ' 28/10/2020')
+(1316245645, 'Maria', 'Piñero', 'Barrio el Hueco','0983563556', '1233 ', 'ENTRAGA', ' 21/12/2020')
+(1315678655, 'Diana', 'Basques', 'Las colinas','0989735635', '1234 ', 'SERVIRSE', ' 02/11/2020')
+(1314536644, 'Cristobal', 'Velez', 'La Proaño','0987367355', '1232 ', 'ENTRAGA', ' 03/12/2020')
+select * from cliente
+
+create table empleado(
+id_empleado integer,
+nombre_empleado  varchar,
+apellido_empleado varchar,
+cargo_emplado varchar,
+primary key (id_empleado)
+)
+insert into empleado values
+(1323, 'Luis', 'Cevallos', 'Repartidor')
+(1324, 'Nexar', 'Bartolome', 'Mesero')
+select * from empleado
+
+
+create table menu(
+id_plato integer,
+nombre_plato varchar,
+precio_plato varchar,
+primary key(id_plato)
+)
+insert into menu values
+(1231, 'Sopa de pollo celestial', '15,50')
+(1232, 'Arroz Marinero con esencia de sirena', '20,00')
+(1233, 'Sopa de murcielago blanco', '10,50')
+(1234, 'Arroz con Queso de vaca negra', '12,50')
+select * from menu
+
+create table chef(
+id_chef integer,
+nombre_chef varchar,
+primary key(id_chef)
+)
+insert into chef values
+(1201, 'Mario 	Bross')
+(1202, 'Belen Castro')
+select * from chef
+
+
+
+---MUESTRE LOS NOMBRES,FECHAS DE LOS CLIENTES QUE REALIZARON UN PEDIDO A DOMISILIO---
+
+select nombre_cliente, apellido_cliente, fecha_compra, id_tipo from cliente
+where id_tipo like 'DOMICILIO';
+
+-----Nombre y precio de todos los platos que se vendieron a domicilio------
+
+
+select ct.id_plato,id_tipo,mn.nombre_plato,precio_plato from cliente as ct 
+inner join menu as mn on  ct.id_plato=mn.id_plato where id_tipo like 'DOMICILIO';
